@@ -21,16 +21,6 @@ public class AuthController {
         this.googleAuthService = googleAuthService;
     }
 
-    // ----- 테스트 -----
-    @Operation(summary = "[Test] 테스트"
-            ,description = "테스트 코드 입니다.",
-            tags = {"[Test] 테스트"}
-    )
-    @GetMapping("/test")
-    public Map<String, String> test(){
-        return Map.of("message", "test");
-    }
-
     // ----- 구글 로그인 -----
     @PostMapping("/google/mobile/login")
     @Operation(summary = "[App] 구글 로그인"
