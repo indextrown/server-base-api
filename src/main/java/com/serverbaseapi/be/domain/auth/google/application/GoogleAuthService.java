@@ -49,7 +49,7 @@ public class GoogleAuthService {
     }
 
     // ----- Google Mobile Login -----
-    // 로그인 & 회원가입을 동시에 처리하는 API
+    // 로그인 & 회원가입(idToken, email만)을 동시에 처리하는 API
     public LoginResponseDto mobileLogin(GoogleAppLoginRequestDto googleAppLoginRequestDto) {
         GoogleUserInfoResponseDto googleUserInfoResponseDto = parseIdTokenToProfile(googleAppLoginRequestDto.getIdToken());
         String uid = googleUserInfoResponseDto.getSub();
@@ -59,6 +59,7 @@ public class GoogleAuthService {
 
         User user = upsertyByuid(uid, email);
         Logger.d(user.getUuid());
+        System.out.println("구글 로그인" + LoginResponseDto.from(user));
         return LoginResponseDto.from(user);
     }
 
@@ -80,6 +81,8 @@ public class GoogleAuthService {
 
         // 4) 변경된 유저 정보를 DB에 반영
         userRepository.save(user);
+
+        System.out.println("팝팡 회원가입" + SignupResponseDto.from(user));
 
         // 5) 응답 DTO로 변환하여 반환
         return SignupResponseDto.from(user);

@@ -6,7 +6,9 @@ import com.serverbaseapi.be.domain.users.entity.User;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
+@ToString
 @Getter
 @NoArgsConstructor
 public class LoginResponseDto {

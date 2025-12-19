@@ -6,6 +6,7 @@ import com.serverbaseapi.be.domain.users.entity.User;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 /**
  *@Builder
@@ -24,6 +25,8 @@ import lombok.NoArgsConstructor;
  *     .role(user.getRole())       → 사용자 권한 설정
  *     .build()                    → DTO 객체 완성
  */
+
+@ToString
 @Getter
 @NoArgsConstructor // 파라미터가 하나도 없는 기본 생성자(= 인자 없는 생성자)를 자동으로 만들어주는 Lombok 어노테이션
 public class SignupResponseDto {
